@@ -84,6 +84,9 @@ class Actor:
     def save(self, path):
         self.model.save_weights(path+'/actor.h5')
 
+    def load(self, path):
+        self.model.load_weights(path + '/actor.h5')
+
 
 class Critic:
     """Critic calculates Q-values"""
@@ -158,6 +161,9 @@ class Critic:
     def save(self, path):
         self.model.save_weights(path+'/critic.h5')
 
+    def load(self, path):
+        self.model.load_weights(path + '/critic.h5')
+
 
 class Agent:
     def __init__(self, state_shape=None, action_len=None, action_scale=None):
@@ -220,3 +226,7 @@ class Agent:
     def save(self, path):
         self.actor.save(path)
         self.critic.save(path)
+
+    def load(self, path):
+        self.actor.load(path)
+        self.critic.load(path)

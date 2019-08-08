@@ -15,6 +15,8 @@ EPISODES = 1000
 MAX_STEPS = 500
 BATCH_SIZE = 32
 SEED = 22
+continued = False
+path = "path"
 
 with tf.device('/GPU:0'):
     env = Environment("data/u20.txt", SEED)
@@ -27,6 +29,8 @@ with tf.device('/GPU:0'):
     # np.random.seed(SEED)
 
     agent = Agent(state_shape, action_len, action_scale)
+    if continued:
+        agent.load(path)
     agent.summary()
 
     for episode in range(EPISODES):
@@ -40,7 +44,8 @@ with tf.device('/GPU:0'):
         #     env.render()
             # video.capture_frame()
             action = agent.act(state)
-            action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+1), 0, 0.99)
+            if not continued:
+                action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+1), 0, 0.99)
             # print(state, action)
             # print(action)
             # print(state, action)
@@ -48,7 +53,7 @@ with tf.device('/GPU:0'):
             # print(next_state, action, reward, done, info)
 
             # print(next_state, reward, done, info)
-            # score += times
+            score += times
             if next_state is not None: next_state = np.reshape(next_state, state_shape)
             # if next_state[0] > 0.95:
             #     if 0 < next_state[1] < 0.312:
@@ -56,12 +61,12 @@ with tf.device('/GPU:0'):
             #     elif -0.312 < next_state[1] <= 0:
             #         reward = min(action[0] * 4 - 4, 0)
             env.memorize([state, action, reward, next_state, done])
-            print(score)
+            # print(score)
             if done:
                 print("\nepisode: {}, score: {}".format(episode, score))
                 break
             state = next_state
-            if len(env.memory) >= BATCH_SIZE and st % (MAX_STEPS/20) == 0:
+            if len(env.memory) >= BATCH_SIZE:  # and st % (MAX_STEPS/20) == 0:
                 samples = env.get_samples(BATCH_SIZE)
                 agent.train(samples)
             agent.update_target_net()
@@ -69,4 +74,4 @@ with tf.device('/GPU:0'):
             agent.network_copy()
         # if episode == 5:
         #     break
-    agent.save("path")
+    agent.save(path)

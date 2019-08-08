@@ -2,12 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0dced33-6cef-4016-90ca-1bd347860e72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/DDPG.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/DDPG_WRSN.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DDPG.py" beforeDir="false" afterPath="$PROJECT_DIR$/DDPG.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -20,11 +14,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="211">
-              <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
+            <state relative-caret-position="287">
+              <caret line="115" column="74" selection-start-line="115" selection-start-column="74" selection-end-line="115" selection-end-column="74" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -35,8 +29,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DDPG.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1653">
-              <caret line="115" column="84" selection-start-line="115" selection-start-column="84" selection-end-line="115" selection-end-column="84" />
+            <state relative-caret-position="864">
+              <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -44,11 +38,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="72" selection-start-line="72" selection-end-line="72" />
+            <state relative-caret-position="-48">
+              <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -95,8 +89,8 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/data/u20.txt" />
         <option value="$PROJECT_DIR$/DDPG.py" />
-        <option value="$PROJECT_DIR$/environment.py" />
         <option value="$PROJECT_DIR$/main.py" />
+        <option value="$PROJECT_DIR$/environment.py" />
       </list>
     </option>
   </component>
@@ -112,6 +106,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="ProjectPane" />
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -123,7 +118,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -343,17 +337,18 @@
       <workItem from="1565140327474" duration="11090000" />
       <workItem from="1565196503483" duration="1738000" />
       <workItem from="1565224443746" duration="8096000" />
+      <workItem from="1565233045915" duration="1076000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="126991000" />
+    <option name="totallyTimeSpent" value="128067000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4992764" visible="true" weight="0.15595716" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4992764" visible="true" weight="0.1579652" />
       <window_info id="Structure" order="1" sideWeight="0.5007236" side_tool="true" weight="0.18875502" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -368,7 +363,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" visible="true" weight="0.32561505" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.32561505" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -436,6 +431,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../DDPG/DDPG.py" />
     <entry file="file://$PROJECT_DIR$/../DDPG/main.py" />
+    <entry file="file://$PROJECT_DIR$/data/u20.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/test_PER.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1197">
@@ -450,27 +452,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/u20.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="141" column="51" selection-start-line="141" selection-start-column="51" selection-end-line="141" selection-end-column="51" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/DDPG.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1653">
-          <caret line="115" column="84" selection-start-line="115" selection-start-column="84" selection-end-line="115" selection-end-column="84" />
+        <state relative-caret-position="864">
+          <caret line="232" lean-forward="true" selection-start-line="232" selection-end-line="232" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -479,10 +464,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="72" selection-start-line="72" selection-end-line="72" />
+        <state relative-caret-position="-48">
+          <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="287">
+          <caret line="115" column="74" selection-start-line="115" selection-start-column="74" selection-end-line="115" selection-end-column="74" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>

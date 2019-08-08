@@ -70,7 +70,7 @@ with tf.device('/GPU:0'):
                 samples = env.get_samples(BATCH_SIZE)
                 agent.train(samples)
             agent.update_target_net()
-        if episode % int(EPISODES/100) == 0:
+        if (episode+1) % int(EPISODES/100) == 0:
             agent.network_copy()
             agent.save(path)
         # if episode == 5:

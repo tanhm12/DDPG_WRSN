@@ -12,7 +12,7 @@ from environment import Environment
 
 
 EPISODES = 1000
-MAX_STEPS = 500
+MAX_STEPS = 300
 BATCH_SIZE = 32
 SEED = 22
 continued = False
@@ -48,7 +48,7 @@ with tf.device('/GPU:0'):
                 action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+1), 0, 0.99)
             # print(state, action)
             # print(action)
-            # print(state, action)
+            print(state, action)
             next_state, reward, times, done, info = env.step(action)
             # print(next_state, action, reward, done, info)
 
@@ -63,14 +63,14 @@ with tf.device('/GPU:0'):
             env.memorize([state, action, reward, next_state, done])
             # print(score)
             if done:
-                print("\nepisode: {}, score: {}".format(episode, score))
+                print("episode: {}, score: {}\n".format(episode, score))
                 break
             state = next_state
             if len(env.memory) >= BATCH_SIZE:  # and st % (MAX_STEPS/20) == 0:
                 samples = env.get_samples(BATCH_SIZE)
                 agent.train(samples)
             agent.update_target_net()
-        if (episode+1) % int(EPISODES/100) == 0:
+        if (episode+1) % 5 == 0:
             agent.network_copy()
             agent.save(path)
         # if episode == 5:

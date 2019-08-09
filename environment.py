@@ -8,7 +8,7 @@ MC_POS = np.array([0, 0])
 MC_V = 5
 MC_CHARGING_POWER = 5
 WORST_REWARD = -8000
-TIME_INTERVAL = 50
+TIME_INTERVAL = 150
 
 
 class Networks:
@@ -58,7 +58,7 @@ class Networks:
 
     def update(self, time: float, charged_node=None):
         self.remaining_time[1:] -= time
-        self.remaining_energy = np.multiply(self.remaining_time, self.ecr)
+        self.remaining_energy -= self.ecr * time
         if charged_node is not None:
             self.remaining_time[charged_node] += time
         for i in range(1, len(self.remaining_time)):
@@ -108,7 +108,7 @@ class Environment:
         self.state = None
         self.done = False
         self.action = [None, None]
-        self.avg_remaining_time = None
+        self.min_remaining_time = None
 
     def reset(self):
         if len(self.memory) > 0:
@@ -122,33 +122,36 @@ class Environment:
         self.action = [None, None]
         self.net.remaining_time = np.concatenate(([1], self.state))
         self.net.remaining_energy = np.multiply(self.net.remaining_time, self.net.ecr)
-        self.avg_remaining_time = np.mean(self.state)
+        self.min_remaining_time = np.amin(self.state)
         return self.state
 
     def is_stuck_with(self, node: int, ratio: float):
-        if node == self.action[0]:
-            if ratio == 1. or ratio == 0.:
-                return self.net.update(TIME_INTERVAL)
+        if node == self.action[0] or ratio <= 0.02:
+            return self.net.update(TIME_INTERVAL)
+        else:
+            return 0
 
     def step(self, action):
         node = int(action[0] * self.net.number_of_nodes) + 1
         ratio = action[1]
         done = self.is_stuck_with(node, ratio)
+        times = 0
         if done:
             return None, WORST_REWARD, TIME_INTERVAL, True, None
+        if done != 0:
+            times += TIME_INTERVAL
         moving_time = self.mc.move_to(node, self.net)
         done = self.net.update(moving_time)
         if done:
             return None, WORST_REWARD, moving_time, True, None
         charging_time = self.mc.charge(node, ratio, self.net)
-        times = moving_time + charging_time
-        done = self.net.update(charging_time)
+        times += moving_time + charging_time
         if done:
             return None, WORST_REWARD, times, True, None
         next_state = self.net.remaining_time[1:]
-        avg_remaining_time = np.mean(next_state)
-        reward = avg_remaining_time - self.avg_remaining_time
-        self.avg_remaining_time = avg_remaining_time
+        min_remaining_time = np.amin(next_state)
+        reward = min_remaining_time - self.min_remaining_time
+        self.min_remaining_time = min_remaining_time
         self.state = next_state
         self.action = [node, ratio]
         return self.state, reward, times, done, None

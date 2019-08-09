@@ -40,7 +40,7 @@ with tf.device('/GPU:0'):
         score = 0
         # print(state)
         # done = False
-        noise =  np.random.normal(NOISE, NOISE / 2) / (1+pow(NOISE_C, episode))
+        noise =  np.random.normal(NOISE, NOISE / 2, 2) / (1+pow(NOISE_C, episode))
         for st in range(MAX_STEPS):
         # while not done :
         #     env.render()

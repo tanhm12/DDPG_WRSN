@@ -45,7 +45,7 @@ with tf.device('/GPU:0'):
             # video.capture_frame()
             action = agent.act(state)
             if not continued:
-                action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+2), 0, 0.99)
+                action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+1), 0, 0.99)
             # print(state, action)
             # print(action)
             print(state, action)

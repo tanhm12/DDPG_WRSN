@@ -25,7 +25,7 @@ with tf.device('/GPU:0'):
     state_shape = env.state_shape
     action_len = env.action_shape[0]
     action_scale = None
-    noise = 0.2
+    noise = 0.6
     # np.random.seed(SEED)
 
     agent = Agent(state_shape, action_len, action_scale)
@@ -45,7 +45,7 @@ with tf.device('/GPU:0'):
             # video.capture_frame()
             action = agent.act(state)
             if not continued:
-                action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+1), 0, 0.99)
+                action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+2), 0, 0.99)
             # print(state, action)
             # print(action)
             print(state, action)

@@ -55,6 +55,7 @@ class Networks:
                 distance_matrix[i, j] = fn(self.coords[i], self.coords[j])
                 distance_matrix[j, i] = distance_matrix[i, j]
         self.distance_matrix = distance_matrix
+        print(self.distance_matrix)
 
     def update(self, time: float, charged_node=None):
         self.remaining_time[1:] -= time
@@ -94,8 +95,9 @@ class MC:
 
 class Environment:
     """
-    *state: n*1 : remaining time
-    *action: 2*1 : node , charging ratio
+    *s tate: n*1 : remaining time
+    * action: 2*1 : node , charging ratio
+    * alpha = mean(max_remaining_time) / min_remaining_time
     """
     def __init__(self, file: str, seed=0):
         self.seed = seed
@@ -109,6 +111,9 @@ class Environment:
         self.done = False
         self.action = [None, None]
         self.min_remaining_time = None
+        self.avg_remaining_time = None
+        self.alpha = np.mean(np.divide(self.net.max_E[1:], self.net.ecr[1:])) / np.amin(self.net.remaining_time[1:])
+        self.beta = 1 / (self.alpha + 1)
 
     def reset(self):
         if len(self.memory) > 0:
@@ -123,6 +128,7 @@ class Environment:
         self.net.remaining_time = np.concatenate(([1], self.state))
         self.net.remaining_energy = np.multiply(self.net.remaining_time, self.net.ecr)
         self.min_remaining_time = np.amin(self.state)
+        self.avg_remaining_time = np.mean(self.state)
         return self.state
 
     def is_stuck_with(self, node: int, ratio: float):
@@ -136,7 +142,7 @@ class Environment:
         ratio = action[1]
         done = self.is_stuck_with(node, ratio)
         times = 0
-        if done == True:
+        if done is True:
             return None, WORST_REWARD, TIME_INTERVAL, True, None
         if done != -1:
             times += TIME_INTERVAL
@@ -154,8 +160,11 @@ class Environment:
         times += moving_time + charging_time
         next_state = self.net.remaining_time[1:]
         min_remaining_time = np.amin(next_state)
-        reward = min_remaining_time - self.min_remaining_time
+        avg_remaining_time = np.mean(next_state)
+        reward = self.beta * (avg_remaining_time - self.avg_remaining_time) + \
+                (1-self.beta)*(min_remaining_time - self.min_remaining_time)
         self.min_remaining_time = min_remaining_time
+        self.avg_remaining_time = avg_remaining_time
         self.state = next_state
         self.action = [node, ratio]
         return self.state, reward, times, done, None

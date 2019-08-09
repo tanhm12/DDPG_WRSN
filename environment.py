@@ -118,7 +118,7 @@ class Environment:
     def reset(self):
         if len(self.memory) > 0:
             # print(len(self.memory))
-            self.state = random.choice(self.memory)
+            self.state = random.choice(self.memory)[0]
             # print(self.state)
         # the first reset, memory has nothing
         else:

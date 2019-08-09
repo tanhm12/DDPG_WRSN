@@ -17,6 +17,7 @@ BATCH_SIZE = 32
 SEED = 22
 continued = False
 path = "path"
+NOISE_C = 1.1
 
 with tf.device('/GPU:0'):
     env = Environment("data/u20.txt", SEED)
@@ -25,7 +26,7 @@ with tf.device('/GPU:0'):
     state_shape = env.state_shape
     action_len = env.action_shape[0]
     action_scale = None
-    noise = 0.6
+    NOISE = 0.6
     # np.random.seed(SEED)
 
     agent = Agent(state_shape, action_len, action_scale)
@@ -39,13 +40,14 @@ with tf.device('/GPU:0'):
         score = 0
         # print(state)
         # done = False
+        noise =  np.random.normal(NOISE, NOISE / 2) / (1+pow(NOISE_C, episode))
         for st in range(MAX_STEPS):
         # while not done :
         #     env.render()
             # video.capture_frame()
             action = agent.act(state)
             if not continued:
-                action = np.clip(action + np.random.choice([-1, 1])*noise/(episode+1), 0, 0.99)
+                action = np.clip(action + np.random.choice([-1, 1])*noise, 0, 0.99)
             # print(state, action)
             # print(action)
             print(state, action)

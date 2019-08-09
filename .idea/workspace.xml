@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a0dced33-6cef-4016-90ca-1bd347860e72" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/environment.py" beforeDir="false" afterPath="$PROJECT_DIR$/environment.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/path/actor.h5" beforeDir="false" afterPath="$PROJECT_DIR$/path/actor.h5" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/path/critic.h5" beforeDir="false" afterPath="$PROJECT_DIR$/path/critic.h5" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -16,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/environment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="140" column="18" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
+            <state relative-caret-position="90">
+              <caret line="131" column="21" selection-start-line="131" selection-start-column="21" selection-end-line="131" selection-end-column="21" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -29,9 +26,18 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/u20.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DDPG.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4389">
+            <state relative-caret-position="346">
               <caret line="232" selection-start-line="232" selection-end-line="232" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
@@ -40,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="77">
-              <caret line="54" column="26" lean-forward="true" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+            <state relative-caret-position="256">
+              <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -93,8 +99,8 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/data/u20.txt" />
         <option value="$PROJECT_DIR$/DDPG.py" />
-        <option value="$PROJECT_DIR$/main.py" />
         <option value="$PROJECT_DIR$/environment.py" />
+        <option value="$PROJECT_DIR$/main.py" />
       </list>
     </option>
   </component>
@@ -117,6 +123,11 @@
             <path>
               <item name="DDPG_WRSN" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="C:\Users\Zayt\Desktop\LAB research\DDPG_WRSN" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="DDPG_WRSN" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="C:\Users\Zayt\Desktop\LAB research\DDPG_WRSN" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -343,12 +354,12 @@
       <workItem from="1565224443746" duration="8096000" />
       <workItem from="1565233045915" duration="1236000" />
       <workItem from="1565235369540" duration="600000" />
-      <workItem from="1565312517199" duration="2930000" />
+      <workItem from="1565312517199" duration="5043000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131757000" />
+    <option name="totallyTimeSpent" value="133870000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="848" extended-state="6" />
@@ -369,7 +380,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Terminal" order="11" />
-      <window_info anchor="bottom" id="Python Console" order="12" weight="0.35311145" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.35311145" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -437,23 +448,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../DDPG/DDPG.py" />
     <entry file="file://$PROJECT_DIR$/../DDPG/main.py" />
-    <entry file="file://$PROJECT_DIR$/data/u20.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DDPG.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4389">
-          <caret line="232" selection-start-line="232" selection-end-line="232" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test_PER.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1197">
@@ -468,22 +462,39 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/DDPG.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="54" column="26" lean-forward="true" selection-start-line="54" selection-start-column="26" selection-end-line="54" selection-end-column="26" />
+        <state relative-caret-position="346">
+          <caret line="232" selection-start-line="232" selection-end-line="232" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/u20.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/environment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="140" column="18" selection-start-line="140" selection-start-column="18" selection-end-line="140" selection-end-column="18" />
+        <state relative-caret-position="90">
+          <caret line="131" column="21" selection-start-line="131" selection-start-column="21" selection-end-line="131" selection-end-column="21" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

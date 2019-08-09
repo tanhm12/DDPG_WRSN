@@ -54,6 +54,7 @@ with tf.device('/GPU:0'):
 
             # print(next_state, reward, done, info)
             score += times
+            print(times)
             if next_state is not None: next_state = np.reshape(next_state, state_shape)
             # if next_state[0] > 0.95:
             #     if 0 < next_state[1] < 0.312:
@@ -74,4 +75,4 @@ with tf.device('/GPU:0'):
             agent.network_copy()
             agent.save(path)
         # if episode == 5:
-        #     break
+        # break

@@ -129,25 +129,29 @@ class Environment:
         if node == self.action[0] or ratio <= 0.02:
             return self.net.update(TIME_INTERVAL)
         else:
-            return 0
+            return -1
 
     def step(self, action):
         node = int(action[0] * self.net.number_of_nodes) + 1
         ratio = action[1]
         done = self.is_stuck_with(node, ratio)
         times = 0
-        if done:
+        if done == True:
             return None, WORST_REWARD, TIME_INTERVAL, True, None
-        if done != 0:
+        if done != -1:
             times += TIME_INTERVAL
+        # print(times)
         moving_time = self.mc.move_to(node, self.net)
+        # print(moving_time)
         done = self.net.update(moving_time)
         if done:
             return None, WORST_REWARD, moving_time, True, None
         charging_time = self.mc.charge(node, ratio, self.net)
-        times += moving_time + charging_time
+        # print(charging_time)
+        done = self.net.update(charging_time, node)
         if done:
             return None, WORST_REWARD, times, True, None
+        times += moving_time + charging_time
         next_state = self.net.remaining_time[1:]
         min_remaining_time = np.amin(next_state)
         reward = min_remaining_time - self.min_remaining_time

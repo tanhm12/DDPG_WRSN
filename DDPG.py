@@ -121,7 +121,7 @@ class Critic:
         out = tf.keras.layers.Dense(1, activation="linear")(out)
         model = tf.keras.models.Model(inputs=[state, action], outputs=out)
         # self.out = out
-        model.compile(optimizer="adam", loss="MSE")
+        model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=0.01), loss="MSE")
 
         return model
 
@@ -208,7 +208,7 @@ class Agent:
         # print(grads)
         # grads = tape.gradient(loss, self.actor.model.trainable_variables)
         grads = self.actor.get_grads(critic_grads, samples)[0]
-        tf.keras.optimizers.Adam(learning_rate=lr).apply_gradients(zip(grads, self.actor.model.trainable_weights))
+        tf.keras.optimizers.Adam(learning_rate=0.01).apply_gradients(zip(grads, self.actor.model.trainable_weights))
 
     def train(self, samples):
         self.train_critic(samples)

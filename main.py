@@ -1,6 +1,7 @@
 import numpy as np
 # import gym
 import tensorflow as tf
+import copy
 
 from DDPG import Agent
 from environment import Environment
@@ -63,6 +64,8 @@ with tf.device('/GPU:0'):
             #         reward = min(-action[0] * 4 - 4, 0)
             #     elif -0.312 < next_state[1] <= 0:
             #         reward = min(action[0] * 4 - 4, 0)
+            if episode == 0:
+                env.start.append(copy.copy(state))
             env.memorize([state, action, reward, next_state, done])
             # print(score)
             if done:
@@ -72,9 +75,9 @@ with tf.device('/GPU:0'):
             if len(env.memory) >= BATCH_SIZE:  # and st % (MAX_STEPS/20) == 0:
                 samples = env.get_samples(BATCH_SIZE)
                 agent.train(samples)
-            agent.update_target_net()
+                agent.update_target_net()
         if (episode+1) % 10 == 0:
             agent.network_copy()
             agent.save(path)
-        # if episode == 5:
-        # break
+        # if episode == 2:
+        #     break

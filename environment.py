@@ -10,8 +10,6 @@ MC_V = 5
 MC_CHARGING_POWER = 5
 WORST_REWARD = -8000
 TIME_INTERVAL = 150
-SEED = 22
-random.seed(SEED)
 
 
 class Networks:
@@ -27,7 +25,7 @@ class Networks:
         self.remaining_time = None
         self.coords = None  # coordinate
         self.distance_matrix = None
-        self.init_remaining_time = None
+        # self.init_remaining_time = None
         self._initialize(file)
 
     def _initialize(self, file: str):
@@ -52,7 +50,7 @@ class Networks:
         self.ecr = np.array(ecr)
         self.coords = np.array(coords)
         self.remaining_time = np.divide(self.remaining_energy, self.ecr)
-        self.init_remaining_time = copy.copy(self.remaining_time)
+        # self.init_remaining_time = copy.copy(self.remaining_time)
 
         fn = lambda pos1, pos2: np.sqrt(sum(t**2 for t in (pos1 - pos2)))
         for i in range(self.number_of_nodes+1):
@@ -106,7 +104,7 @@ class Environment:
     """
     def __init__(self, file: str, seed=0):
         self.seed = seed
-        # random.seed(self.seed)
+        random.seed(self.seed)
         self.net = Networks(file)
         self.memory = deque(maxlen=2000)
         self.mc = MC(0, MC_POS, MC_V, MC_CHARGING_POWER)
@@ -119,16 +117,19 @@ class Environment:
         self.avg_remaining_time = None
         self.alpha = np.mean(np.divide(self.net.max_E[1:], self.net.ecr[1:])) / np.amin(self.net.remaining_time[1:])
         self.beta = 1 / (self.alpha + 1)
+        self.start = []
 
     def reset(self):
-        if len(self.memory) > 15:
+        if len(self.start) > 0:
             # print(len(self.memory))
-            pos = random.randrange(0, 15)
-            self.state = self.memory[pos][0]
-            # print(self.state)
+            pos = random.randrange(0, len(self.start))
+            # print(self.start)
+            self.state = self.start[pos]
+            # print(1, pos)
         # the first reset, memory has nothing
         else:
-            self.state = self.net.init_remaining_time[1:]
+            self.state = self.net.remaining_time[1:]
+            # print(2, self.state)
         # print(self.state)
         self.mc = MC(0, MC_POS, MC_V, MC_CHARGING_POWER)
         self.action = [None, None]

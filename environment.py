@@ -146,7 +146,7 @@ class Environment:
             return -1
 
     def step(self, action):
-        node = int(action[0] * self.net.number_of_nodes) + 1
+        node = min(int(action[0] * self.net.number_of_nodes) + 1, self.net.number_of_nodes)
         ratio = action[1]
         done = self.is_stuck_with(node, ratio)
         times = 0

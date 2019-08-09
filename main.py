@@ -16,9 +16,10 @@ EPISODES = 1000
 MAX_STEPS = 300
 BATCH_SIZE = 32
 SEED = 22
-continued = False
+continued = True
 path = "path"
 NOISE_C = 1.1
+first_ep = 0
 
 with tf.device('/GPU:0'):
     env = Environment("data/u20.txt", SEED)
@@ -35,13 +36,13 @@ with tf.device('/GPU:0'):
         agent.load(path)
     agent.summary()
 
-    for episode in range(EPISODES):
+    for episode in range(first_ep, EPISODES):
         state = env.reset()
         state = np.reshape(state, state_shape)
         score = 0
         # print(state)
         # done = False
-        noise =  np.random.normal(NOISE, NOISE / 2, 2) / (1+pow(NOISE_C, episode))
+        noise = np.random.normal(NOISE, NOISE / 2, 2) / (1+pow(NOISE_C, episode+10))
         for st in range(MAX_STEPS):
         # while not done :
         #     env.render()
@@ -64,7 +65,7 @@ with tf.device('/GPU:0'):
             #         reward = min(-action[0] * 4 - 4, 0)
             #     elif -0.312 < next_state[1] <= 0:
             #         reward = min(action[0] * 4 - 4, 0)
-            if episode == 0:
+            if episode == first_ep:
                 env.start.append(copy.copy(state))
             env.memorize([copy.copy(x) for x in [state, action, reward, next_state, done]])
             # print(score)
@@ -79,5 +80,5 @@ with tf.device('/GPU:0'):
         if (episode+1) % 10 == 0:
             agent.network_copy()
             agent.save(path)
-        # if episode == 2:
+        # if episode == first_ep+2:
         #     break

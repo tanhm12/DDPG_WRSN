@@ -10,6 +10,8 @@ MC_V = 5
 MC_CHARGING_POWER = 5
 WORST_REWARD = -8000
 TIME_INTERVAL = 150
+SEED = 22
+random.seed(SEED)
 
 
 class Networks:
@@ -58,7 +60,7 @@ class Networks:
                 distance_matrix[i, j] = fn(self.coords[i], self.coords[j])
                 distance_matrix[j, i] = distance_matrix[i, j]
         self.distance_matrix = distance_matrix
-        print(self.distance_matrix)
+        # print(self.distance_matrix)
 
     def update(self, time: float, charged_node=None):
         self.remaining_time[1:] -= time
@@ -119,13 +121,15 @@ class Environment:
         self.beta = 1 / (self.alpha + 1)
 
     def reset(self):
-        if len(self.memory) > 100:
+        if len(self.memory) > 15:
             # print(len(self.memory))
-            self.state = random.choice(self.memory)[0]
+            pos = random.randrange(0, 15)
+            self.state = self.memory[pos][0]
             # print(self.state)
         # the first reset, memory has nothing
         else:
             self.state = self.net.init_remaining_time[1:]
+        # print(self.state)
         self.mc = MC(0, MC_POS, MC_V, MC_CHARGING_POWER)
         self.action = [None, None]
         self.net.remaining_time = np.concatenate(([1], self.state))

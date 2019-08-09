@@ -51,13 +51,13 @@ with tf.device('/GPU:0'):
                 action = np.clip(action + np.random.choice([-1, 1])*noise, 0, 0.99)
             # print(state, action)
             # print(action)
-            print(state, action)
+            # print(state, action)
             next_state, reward, times, done, info = env.step(action)
             # print(next_state, action, reward, done, info)
 
             # print(next_state, reward, done, info)
             score += times
-            print(times)
+            # print(times)
             if next_state is not None: next_state = np.reshape(next_state, state_shape)
             # if next_state[0] > 0.95:
             #     if 0 < next_state[1] < 0.312:
@@ -66,7 +66,7 @@ with tf.device('/GPU:0'):
             #         reward = min(action[0] * 4 - 4, 0)
             if episode == 0:
                 env.start.append(copy.copy(state))
-            env.memorize([state, action, reward, next_state, done])
+            env.memorize([copy.copy(x) for x in [state, action, reward, next_state, done]])
             # print(score)
             if done:
                 print("episode: {}, score: {}\n".format(episode, score))
